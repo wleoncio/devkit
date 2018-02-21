@@ -1,10 +1,12 @@
 #' Increase package version in DESCRIPTION
 #' @param sep character separating major.minor.patch version from build
 #'   identifier
+#' @param file path and name of the description file
+#' @param test actually change the file number?
 #' @importFrom utils packageVersion
 #' @export
 #'
-increaseDevVersion <- function(file = "DESCRIPTION", sep = "-") {
+increaseDevVersion <- function(file = "DESCRIPTION", sep = "-", test = FALSE) {
   # Extract
   description <- readLines(file)
   for (line in 1:length(description)) {
@@ -14,7 +16,6 @@ increaseDevVersion <- function(file = "DESCRIPTION", sep = "-") {
       break
     }
   }
-  cat(gsub("Package: " , "", pkg), "updated from", str)
   reg.sep      <- paste0("\\", sep)
   str.split   <- strsplit(str, reg.sep)[[1]]
   dev.version <- as.numeric(str.split[length(str.split)])
@@ -26,8 +27,12 @@ increaseDevVersion <- function(file = "DESCRIPTION", sep = "-") {
   fixed.str   <- str.split[1:(length(str.split) - 1)]
   str.updated <- paste(c(fixed.str, dev.version.updated), collapse = sep)
   description[line] <- str.updated
-  cat(" to", str.updated)
 
   # Output
-  writeLines(description, "DESCRIPTION")
+  if (test) {
+    cat("Package version updated")
+  } else {
+    cat(gsub("Package: " , "", pkg), "updated from", str, " to", str.updated)
+    writeLines(description, file)
+  }
 }
