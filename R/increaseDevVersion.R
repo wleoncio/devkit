@@ -4,9 +4,9 @@
 #' @importFrom utils packageVersion
 #' @export
 #'
-increaseDevVersion <- function(sep = "-") {
+increaseDevVersion <- function(file = "DESCRIPTION", sep = "-") {
   # Extract
-  description <- readLines("DESCRIPTION")
+  description <- readLines(file)
   for (line in 1:length(description)) {
     if (substr(description[line], 1, 7) == "Package") pkg <- description[line]
     if (substr(description[line], 1, 7) == "Version") {
@@ -15,8 +15,8 @@ increaseDevVersion <- function(sep = "-") {
     }
   }
   cat(gsub("Package: " , "", pkg), "updated from", str)
-  regSep      <- paste0("\\", sep)
-  str.split   <- strsplit(str, regSep)[[1]]
+  reg.sep      <- paste0("\\", sep)
+  str.split   <- strsplit(str, reg.sep)[[1]]
   dev.version <- as.numeric(str.split[length(str.split)])
 
   # Update
