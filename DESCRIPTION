@@ -1,7 +1,7 @@
 Package: devkit
 Type: Package
 Title: Functions to aid in package development and testing
-Version: 0.0.0-9019
+Version: 0.0.0-9020
 Author: Waldir Leoncio
 Maintainer: Waldir Leoncio <waldir.leoncio@gmail.com>
 Description: This package contains some functions that make package development
