@@ -6,7 +6,7 @@
 #' @importFrom utils packageVersion
 #' @export
 #'
-increaseDevVersion <- function(file = "DESCRIPTION", sep = "-", test = FALSE) {
+increaseDevVersion <- function(file = "DESCRIPTION", sep = ".", test = FALSE) {
   # Extract
   description <- readLines(file)
   for (line in 1:length(description)) {
@@ -32,7 +32,7 @@ increaseDevVersion <- function(file = "DESCRIPTION", sep = "-", test = FALSE) {
   if (test) {
     cat("Package version updated")
   } else {
-    cat(gsub("Package: " , "", pkg), "updated from", str, " to", str.updated)
+    cat(gsub("Package: " , "", pkg), "updated from", str, "to", str.updated)
     writeLines(description, file)
   }
 }
