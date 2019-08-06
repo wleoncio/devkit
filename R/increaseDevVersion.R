@@ -30,9 +30,9 @@ increaseDevVersion <- function(file = "DESCRIPTION", sep = ".", test = FALSE) {
 
   # Output
   if (test) {
-    cat("Package version updated")
+    message("Package version updated")
   } else {
-    cat(gsub("Package: " , "", pkg), "updated from", str, "to", str.updated)
+    message(gsub("Package: " , "", pkg), "updated from", str, "to", str.updated)
     writeLines(description, file)
   }
 }
