@@ -28,11 +28,12 @@ increaseDevVersion <- function(file = "DESCRIPTION", sep = ".", test = FALSE) {
   str.updated <- paste(c(fixed.str, dev.version.updated), collapse = sep)
   description[line] <- str.updated
 
+  message(gsub("Package: " , "", pkg),
+          " updated from ", str, " to ", str.updated)
   # Output
   if (test) {
-    message("Package version updated")
+    message("Change not saved because test == TRUE")
   } else {
-    message(gsub("Package: " , "", pkg), "updated from", str, "to", str.updated)
     writeLines(description, file)
   }
 }

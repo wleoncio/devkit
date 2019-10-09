@@ -1,7 +1,7 @@
 Package: devkit
 Type: Package
 Title: Functions to aid in package development and testing
-Version: 0.0.0-9008
+Version: 0.0.0.9023
 Author: Waldir Leoncio
 Maintainer: Waldir Leoncio <waldir.leoncio@gmail.com>
 Description: This package contains some functions that make package development
@@ -10,6 +10,6 @@ Description: This package contains some functions that make package development
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: testthat
 Imports: pushoverr
